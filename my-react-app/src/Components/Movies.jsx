@@ -78,14 +78,14 @@ function Movies() {
     const updatedWatchList = [...watchList, movieObj];
     console.log(updatedWatchList);
     setWatchList(updatedWatchList);
-    localStorage.setItem("watchlist", JSON.stringify(updatedWatchList));
+    localStorage.setItem("watchList", JSON.stringify(updatedWatchList));
   };
 
   const removeFromWatchlist = (movieObj) => {
     let updatedWatchList = watchList.filter((obj) => obj.id != movieObj.id);
     console.log(updatedWatchList);
     setWatchList(updatedWatchList);
-    localStorage.setItem("watchlist", JSON.stringify(updatedWatchList));
+    localStorage.setItem("watchList", JSON.stringify(updatedWatchList));
   };
 
   
