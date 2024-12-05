@@ -3,7 +3,7 @@ import React from 'react'
 function Moviecard({movieObj,addtoWatchlist,removeFromWatchlist,watchList}) {
     function doesContain() {
       for (let i = 0; i < watchList.length; i++) {
-        if (watchList[i] == movieObj.id) {
+        if (watchList[i].id == movieObj.id) {
           return true;
         }
       }
@@ -23,14 +23,14 @@ function Moviecard({movieObj,addtoWatchlist,removeFromWatchlist,watchList}) {
 
       {doesContain() === false ? (
         <div
-          onClick={() => addtoWatchlist(movieObj.id)}
+          onClick={() => addtoWatchlist(movieObj)}
           className="m-4 flex justify-center h-8 w-8 items-center rounded-lg bg-gray-100/60"
         >
           💙
         </div>
       ) : (
         <div
-          onClick={() => removeFromWatchlist(movieObj.id)}
+          onClick={() => removeFromWatchlist(movieObj)}
           className="m-4 flex justify-center h-8 w-8 items-center rounded-lg bg-gray-100/60"
         >
           ❌

@@ -58,7 +58,7 @@ function Movies() {
 
   useEffect(()=>{
     let moviesFromLS = localStorage.getItem("watchList");
-    console.log("Data from Local Storage:", moviesFromLS);
+    console.log(moviesFromLS);
     if(!moviesFromLS) return;
     setWatchList(JSON.parse(moviesFromLS));
   },[])
@@ -72,23 +72,21 @@ function Movies() {
     setPageNo(pageNo - 1);
   };
 
-  const addtoWatchlist=(movieId)=>{
-    const updatedWatchList=[...watchList,movieId];
-   console.log(updatedWatchList);
+ 
+
+  const addtoWatchlist = (movieObj) => {
+    const updatedWatchList = [...watchList, movieObj];
+    console.log(updatedWatchList);
     setWatchList(updatedWatchList);
-   //add local storage
-   localStorage.setItem("watchList", JSON.stringify(updatedWatchList));
-  }
-  //non premitives -array,object,functions
-  //create a newmeory referrance add old and new data
-const removeFromWatchlist = (movieId) => {
-  const updatedWatchList = watchList.filter((id) => id !== movieId);
-  setWatchList(updatedWatchList);
-  console.log("Updated Watchlist after removal:", updatedWatchList);
-  ///here as well we need to add local storage
-     localStorage.setItem("watchList", JSON.stringify(updatedWatchList));
-      
-};
+    localStorage.setItem("watchlist", JSON.stringify(updatedWatchList));
+  };
+
+  const removeFromWatchlist = (movieObj) => {
+    let updatedWatchList = watchList.filter((obj) => obj.id != movieObj.id);
+    console.log(updatedWatchList);
+    setWatchList(updatedWatchList);
+    localStorage.setItem("watchlist", JSON.stringify(updatedWatchList));
+  };
 
   
   // does contain movie in watchlist
