@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
-// import "@fortawesome/fontawesome-free/css/all.min.css";
-// import "@fortawesome/fontawesome-free/css/all.min.css";
 import axios from "axios";
 import Moviecard from "./Moviecard";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+/* The `Movies` function in the provided code is a React functional component that displays a list of
+trending movies fetched from an API. Here is a breakdown of what the function does: */
 function Movies() {
   const [movies, setMovies] = useState([
     {
@@ -28,7 +31,7 @@ function Movies() {
   ]);
 
   const [pageNo, setPageNo] = useState(1);
-  const [watchList,setWatchList]=useState([]);
+  const [watchList, setWatchList] = useState([]);
 
   useEffect(() => {
     const options = {
@@ -39,11 +42,10 @@ function Movies() {
         accept: "application/json",
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlODk3NDAzMGFmNzBmMzA5ZmI1NTViNTUxZDBlOWJhZSIsIm5iZiI6MTczMzAyNzgwNy42ODMsInN1YiI6IjY3NGJlN2RmNzQyYjMxMjRhZTk0N2Q0YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.maLWGcbV-9zgWamod3MPmTWe4DP7Fw29v7oObyqyxeM",
-          // "Bearer sha512-arT8JpxB/8U3HymiY+fxmtKMwAonPxNOHgq8P4AQxTh5udIDMm6TJJdiVOdJf7XQ44LdZb4RjPLagTeVNakmkg==?yxeM",
+        // "Bearer sha512-arT8JpxB/8U3HymiY+fxmtKMwAonPxNOHgq8P4AQxTh5udIDMm6TJJdiVOdJf7XQ44LdZb4RjPLagTeVNakmkg==?yxeM",
       },
     };
 
-    
     axios
       .request(options)
       .then(function (response) {
@@ -55,13 +57,20 @@ function Movies() {
       });
   }, [pageNo]);
 
-
-  useEffect(()=>{
+  useEffect(() => {
     let moviesFromLS = localStorage.getItem("watchList");
+    /* The line `console.log(moviesFromLS);` is logging the value of the `moviesFromLS` variable to the
+    console. This is helpful for debugging and understanding what data is being retrieved from the
+    local storage. It allows you to see the content of the `moviesFromLS` variable and verify if the
+    data is being retrieved correctly from the local storage. */
+    /* The line `console.log(moviesFromLS);` is logging the value of the `moviesFromLS` variable to the
+    console. This is helpful for debugging and understanding what data is being retrieved from the
+    local storage. It allows you to see the content of the `moviesFromLS` variable and verify if the
+    data is being retrieved correctly from the local storage. */
     console.log(moviesFromLS);
-    if(!moviesFromLS) return;
+    if (!moviesFromLS) return;
     setWatchList(JSON.parse(moviesFromLS));
-  },[])
+  }, []);
 
   const handleNext = () => {
     setPageNo(pageNo + 1);
@@ -71,8 +80,6 @@ function Movies() {
     if (pageNo === 1) return;
     setPageNo(pageNo - 1);
   };
-
- 
 
   const addtoWatchlist = (movieObj) => {
     const updatedWatchList = [...watchList, movieObj];
@@ -88,9 +95,8 @@ function Movies() {
     localStorage.setItem("watchList", JSON.stringify(updatedWatchList));
   };
 
-  
   // does contain movie in watchlist
-  
+
   // function doesContain(movieObj) {
   //   return watchList.includes(movieObj.id);
   // }
@@ -105,26 +111,26 @@ function Movies() {
       {/* CARD for movies */}
       <div className="flex justify-evenly flex-wrap gap-6">
         {movies.map((movieObj) => {
-        return(
-          <Moviecard key={movieObj.id} movieObj={movieObj}
-          addtoWatchlist={addtoWatchlist}
-          removeFromWatchlist={removeFromWatchlist} 
-          watchList={watchList}
-          />
-        );
-         
+          return (
+            <Moviecard
+              key={movieObj.id}
+              movieObj={movieObj}
+              addtoWatchlist={addtoWatchlist}
+              removeFromWatchlist={removeFromWatchlist}
+              watchList={watchList}
+            />
+          );
         })}
-        
       </div>
 
       {/* previous and next arrow */}
       <div className="flex justify-center gap-2 bg-gray-400 p-4 h-[50px] w-full mt-8">
         <div onClick={handlePrevious} className="cursor-pointer px-8">
-          <i className="fa-solid fa-arrow-left"></i>
+          <FontAwesomeIcon icon={faArrowLeft} />
         </div>
         <div>{pageNo}</div>
         <div onClick={handleNext} className="cursor-pointer px-8">
-          <i className="fa-solid fa-arrow-right"></i>
+          <FontAwesomeIcon icon={faArrowRight} />
         </div>
       </div>
     </div>
