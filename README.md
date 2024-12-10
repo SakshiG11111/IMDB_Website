@@ -9,12 +9,6 @@ Brief description of the project in one or two sentences.
 - Point 2: Another key feature.
 - Point 3: More features as required.
 
-## Technologies Used
-- **Frontend**: [List technologies like React.js, HTML, etc.]
-- **Backend**: [List technologies like Node.js, Express.js, etc.]
-- **Database**: [Specify databases if used]
-- **API**: Mention APIs integrated.
-
 ## Installation
 1. Clone the repository:
    ```bash
