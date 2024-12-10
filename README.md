@@ -1,11 +1,29 @@
 # IMDB_Website
 
-A simplified IMDB platform focusing on Watchlist features and API integration for movie data.
+# Project Name
 
-Features
-Search Movies: Search and view movie details.
-Watchlist Management: Add, view, and remove movies from a personalized Watchlist.
-API Integration: Fetch movie data from an external API with error handling
+Brief description of the project in one or two sentences.
+
+## Features
+- Point 1: Short description of the feature.
+- Point 2: Another key feature.
+- Point 3: More features as required.
+
+## Technologies Used
+- **Frontend**: [List technologies like React.js, HTML, etc.]
+- **Backend**: [List technologies like Node.js, Express.js, etc.]
+- **Database**: [Specify databases if used]
+- **API**: Mention APIs integrated.
+
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/project-name.git
+   cd project-name
+2. ```bash
+   npm install
+3. ```bash
+   npm run dev
 
 --Movies Page--
 ![Screenshot 2024-12-10 223858](https://github.com/user-attachments/assets/b4b3c0f5-5581-49ab-bc43-be95b1bc6d8b)
